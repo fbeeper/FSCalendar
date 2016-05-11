@@ -66,6 +66,16 @@
         imageView.contentMode = UIViewContentModeBottom|UIViewContentModeCenter;
         [self.contentView addSubview:imageView];
         self.imageView = imageView;
+
+        CGRect bottomBorderFrame = CGRectMake(self.bounds.origin.x, self.bounds.origin.y + self.bounds.size.height - 1.0f,
+                                              self.bounds.size.width, 1.0f);
+        UIView * borderView = [[UIView alloc] initWithFrame:bottomBorderFrame];
+        borderView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
+        borderView.backgroundColor = _appearance.rowSeparatorColor;
+        borderView.layer.zPosition = MAXFLOAT;
+        [self addSubview:borderView];
+        self.borderView = borderView;
+
         
         self.clipsToBounds = NO;
         self.contentView.clipsToBounds = NO;
@@ -224,6 +234,8 @@
     }
     _eventIndicator.numberOfEvents = self.numberOfEvents;
     _eventIndicator.color = self.preferredEventColor ?: _appearance.eventColor;
+
+    _borderView.backgroundColor = _appearance.rowSeparatorColor;
 }
 
 - (BOOL)isWeekend

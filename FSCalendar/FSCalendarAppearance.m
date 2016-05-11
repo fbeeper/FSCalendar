@@ -114,6 +114,7 @@
         _eventColor = FSCalendarStandardEventDotColor;
         
         _borderColors = [NSMutableDictionary dictionaryWithCapacity:2];
+        _rowSeparatorColor = [UIColor clearColor];
         
     }
     return self;
