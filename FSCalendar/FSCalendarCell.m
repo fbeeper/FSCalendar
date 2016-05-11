@@ -91,14 +91,14 @@
     CGFloat diameter = MIN(self.bounds.size.height*5.0/6.0,self.bounds.size.width);
     diameter = diameter > FSCalendarStandardCellDiameter ? (diameter - (diameter-FSCalendarStandardCellDiameter)*0.5) : diameter;
     _shapeLayer.frame = CGRectMake((self.bounds.size.width-diameter)/2,
-                                        (titleHeight-diameter)/2,
+                                        (self.bounds.size.height-diameter)/2,
                                         diameter,
                                         diameter);
     _shapeLayer.borderWidth = 1.0;
     _shapeLayer.borderColor = [UIColor clearColor].CGColor;
     
     CGFloat eventSize = _shapeLayer.frame.size.height/6.0;
-    _eventIndicator.frame = CGRectMake(0, CGRectGetMaxY(_shapeLayer.frame)+eventSize*0.17, bounds.size.width, eventSize*0.83);
+    _eventIndicator.frame = CGRectMake(0, CGRectGetMidY(_shapeLayer.frame)+eventSize*1.0f, bounds.size.width, eventSize*0.83);
     _imageView.frame = self.contentView.bounds;
 }
 
@@ -233,7 +233,7 @@
         _eventIndicator.hidden = !_numberOfEvents;
     }
     _eventIndicator.numberOfEvents = self.numberOfEvents;
-    _eventIndicator.color = self.preferredEventColor ?: _appearance.eventColor;
+    _eventIndicator.color = self.colorForEvent;
 
     _borderView.backgroundColor = _appearance.rowSeparatorColor;
 }
@@ -295,7 +295,7 @@
 
 - (void)invalidateEventColors
 {
-    _eventIndicator.color = self.preferredEventColor ?: _appearance.eventColor;
+    _eventIndicator.color = self.colorForEvent;
 }
 
 - (void)invalidateCellShapes
@@ -328,6 +328,16 @@
         return self.preferredTitleSelectionColor ?: [self colorForCurrentStateInDictionary:_appearance.titleColors];
     }
     return self.preferredTitleDefaultColor ?: [self colorForCurrentStateInDictionary:_appearance.titleColors];
+}
+
+- (UIColor *)colorForEvent
+{
+    if (self.dateIsSelected || self.isSelected) {
+        return _appearance.selectedEventColor ?: self.preferredEventColor;
+    }
+    else {
+        return self.preferredEventColor ?: _appearance.eventColor;
+    }
 }
 
 - (UIColor *)colorForSubtitleLabel

@@ -523,6 +523,7 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
 {
     FSCalendarCell *cell = (FSCalendarCell *)[collectionView cellForItemAtIndexPath:indexPath];
     cell.dateIsSelected = YES;
+    [self invalidateAppearanceForCell:cell];
     [cell performSelecting];
     NSDate *selectedDate = [self dateForIndexPath:indexPath];
     if (!_supressEvent) {

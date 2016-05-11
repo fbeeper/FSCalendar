@@ -112,6 +112,7 @@
         
         _cellShape = FSCalendarCellShapeCircle;
         _eventColor = FSCalendarStandardEventDotColor;
+        _selectedEventColor = FSCalendarStandardEventDotColor;
         
         _borderColors = [NSMutableDictionary dictionaryWithCapacity:2];
         _rowSeparatorColor = [UIColor clearColor];

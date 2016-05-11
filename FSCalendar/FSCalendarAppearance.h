@@ -87,6 +87,11 @@ typedef NS_OPTIONS(NSUInteger, FSCalendarCaseOptions) {
 @property (strong, nonatomic) UIColor  *eventColor;
 
 /**
+ * The color of selected event dots.
+ */
+@property (strong, nonatomic) UIColor  *selectedEventColor;
+
+/**
  * The color of weekday text.
  */
 @property (strong, nonatomic) UIColor  *weekdayTextColor;
