@@ -242,12 +242,12 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
     self.collectionViewLayout = collectionViewLayout;
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
-    view.backgroundColor = FSCalendarStandardSeparatorColor;
+    view.backgroundColor = _appearance.calendarBorderColor;
     [self addSubview:view];
     self.topBorder = view;
     
     view = [[UIView alloc] initWithFrame:CGRectZero];
-    view.backgroundColor = FSCalendarStandardSeparatorColor;
+    view.backgroundColor = _appearance.calendarBorderColor;
     [self addSubview:view];
     self.bottomBorder = view;
     
@@ -1691,6 +1691,9 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
     [self.collectionView.visibleCells setValue:@YES forKey:@"needsAdjustingViewFrame"];
     self.header.needsAdjustingViewFrame = YES;
     [self.appearance invalidateFonts];
+
+    self.topBorder.backgroundColor = _appearance.calendarBorderColor;
+    self.bottomBorder.backgroundColor = _appearance.calendarBorderColor;
 }
 
 // The best way to detect orientation

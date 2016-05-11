@@ -115,7 +115,8 @@
         
         _borderColors = [NSMutableDictionary dictionaryWithCapacity:2];
         _rowSeparatorColor = [UIColor clearColor];
-        
+
+        _calendarBorderColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.25];
     }
     return self;
 }

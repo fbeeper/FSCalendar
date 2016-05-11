@@ -187,6 +187,11 @@ typedef NS_OPTIONS(NSUInteger, FSCalendarCaseOptions) {
 @property (strong, nonatomic) UIColor  *rowSeparatorColor;
 
 /**
+ * The border color of calendar.
+ */
+@property (strong, nonatomic) UIColor  *calendarBorderColor;
+
+/**
  * The shape appears when a day is selected or today.
  *
  * @see FSCalendarCellShape
